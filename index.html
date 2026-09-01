@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6c84c">
+  <meta name="description" content="An-Nur Masjid Digital Display — jadwal sholat, countdown, pengumuman, agenda, slideshow dan dashboard pengaturan.">
+  <title>An-Nur • Masjid Digital Display</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">ن</div>
+        <div><div class="brand-name">AN-NUR</div><div class="brand-sub">MASJID DIGITAL DISPLAY</div></div>
+      </div>
+      <div class="top-actions">
+        <div class="location-pill"><span>●</span><span id="locationLabel">Mendeteksi lokasi…</span></div>
+        <button class="icon-btn" id="settingsBtn" title="Pengaturan">⚙</button>
+        <button class="icon-btn" id="fullscreenBtn" title="Fullscreen">⛶</button>
+      </div>
+    </header>
+
+    <section class="hero-grid">
+      <div class="hero-card glass">
+        <div class="hero-head">
+          <div>
+            <p class="eyebrow">ASSALAMU'ALAIKUM</p>
+            <h1 id="greeting">Selamat datang di Masjid An-Nur</h1>
+            <p class="muted" id="dateLine">Memuat tanggal…</p>
+          </div>
+          <div class="live-clock"><span id="clock">--:--:--</span><small>WIB</small></div>
+        </div>
+        <div class="next-prayer">
+          <div><span class="label">WAKTU TERDEKAT</span><strong id="nextPrayerName">Memuat…</strong></div>
+          <div class="countdown" id="countdown">--:--:--</div>
+        </div>
+        <div class="quote" id="quote">“Sesungguhnya salat itu adalah kewajiban yang ditentukan waktunya atas orang-orang beriman.”<span>QS. An-Nisa: 103</span></div>
+      </div>
+
+      <div class="side-card glass">
+        <div class="side-title"><span>JADWAL HARI INI</span><button id="refreshBtn" class="tiny-btn">↻</button></div>
+        <div id="prayerList" class="prayer-list"></div>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="panel glass">
+        <div class="panel-title"><span>📢 PENGUMUMAN</span><span class="live-dot">LIVE</span></div>
+        <div id="announcement" class="announcement"></div>
+        <div class="dots" id="announcementDots"></div>
+      </div>
+      <div class="panel glass">
+        <div class="panel-title">📅 AGENDA MASJID</div>
+        <div id="agendaList" class="agenda-list"></div>
+      </div>
+      <div class="panel glass">
+        <div class="panel-title">🌙 INFO HARI INI</div>
+        <div class="info-cards">
+          <div><small>HIJRIYAH</small><b id="hijri">—</b></div>
+          <div><small>CUACA</small><b id="weather">—</b></div>
+          <div><small>ARAH KIBLAT</small><b id="qibla">—</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="banner glass">
+      <div class="banner-icon">﷽</div>
+      <div><strong id="tickerText">Mari merapatkan dan meluruskan shaf.</strong><span>Terima kasih telah menjaga kebersihan dan ketenangan masjid.</span></div>
+    </section>
+
+    <footer><span>© <span id="year"></span> Masjid An-Nur • Bojonggede, Bogor</span><span>Digital Display v1.0</span></footer>
+  </main>
+
+  <div class="modal-backdrop" id="settingsModal">
+    <section class="modal">
+      <button class="close" id="closeSettings">×</button>
+      <div class="modal-head"><div class="brand-mark small">ن</div><div><h2>Pengaturan Display</h2><p>Atur tampilan tanpa mengubah kode.</p></div></div>
+      <div class="settings-grid">
+        <label>Nama Masjid<input id="setMosqueName" value="Masjid An-Nur"></label>
+        <label>Lokasi fallback<input id="setFallback" value="Bojonggede, Bogor, Indonesia"></label>
+        <label>Durasi slide (detik)<input id="setSlide" type="number" min="3" max="60" value="8"></label>
+        <label>Offset jadwal (menit)<input id="setTune" type="number" min="-30" max="30" value="0"></label>
+        <label class="wide">Running text<input id="setTicker" value="Mari merapatkan dan meluruskan shaf. • Mohon menjaga kebersihan masjid."></label>
+      </div>
+      <div class="setting-note">Lokasi browser digunakan bila diizinkan. Jika ditolak, aplikasi memakai Bojonggede, Bogor. Jadwal memakai metode Kementerian Agama RI dari AlAdhan API.</div>
+      <button class="primary-btn" id="saveSettings">Simpan Pengaturan</button>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "mosque": {
+    "name": "Masjid An-Nur",
+    "location": "Bojonggede, Bogor, Jawa Barat, Indonesia",
+    "theme": {
+      "primary": "#d9a928",
+      "accent": "#f6c84c",
+      "background": "#fffaf0"
+    }
+  },
+  "prayer": {
+    "provider": "AlAdhan API",
+    "method": 20,
+    "school": 0,
+    "timezone": "Asia/Jakarta",
+    "fallback": {
+      "latitude": -6.4819,
+      "longitude": 106.8047,
+      "label": "Bojonggede, Bogor"
+    }
+  },
+  "features": {
+    "geolocation": true,
+    "countdown": true,
+    "qibla": true,
+    "hijri": true,
+    "announcements": true,
+    "agenda": true,
+    "fullscreen": true,
+    "localStorageSettings": true
+  }
+}
