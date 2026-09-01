@@ -1,32 +1,39 @@
 {
+  "app": {
+    "name": "An-Nur Masjid Digital Display",
+    "version": "2.0.0"
+  },
   "mosque": {
     "name": "Masjid An-Nur",
-    "location": "Bojonggede, Bogor, Jawa Barat, Indonesia",
-    "theme": {
-      "primary": "#d9a928",
-      "accent": "#f6c84c",
-      "background": "#fffaf0"
-    }
+    "location": "Ciangsana, Gunung Putri, Kabupaten Bogor, Jawa Barat, Indonesia"
+  },
+  "location": {
+    "latitude": -6.3523,
+    "longitude": 106.9556,
+    "label": "Ciangsana, Gunung Putri, Bogor"
   },
   "prayer": {
-    "provider": "AlAdhan API",
+    "provider": "AlAdhan",
     "method": 20,
     "school": 0,
-    "timezone": "Asia/Jakarta",
-    "fallback": {
-      "latitude": -6.4819,
-      "longitude": 106.8047,
-      "label": "Bojonggede, Bogor"
-    }
+    "timezone": "Asia/Jakarta"
   },
-  "features": {
-    "geolocation": true,
-    "countdown": true,
-    "qibla": true,
-    "hijri": true,
-    "announcements": true,
-    "agenda": true,
+  "theme": {
+    "primary": "#D4A62A",
+    "secondary": "#F3D875",
+    "background": "#FFFAF0",
+    "surface": "#FFFFFF"
+  },
+  "display": {
     "fullscreen": true,
-    "localStorageSettings": true
+    "autoRefreshMinutes": 15,
+    "announcementIntervalSeconds": 10
+  },
+  "content": {
+    "ticker": "Mari merapatkan dan meluruskan shaf. • Mohon menjaga kebersihan, ketenangan, dan kenyamanan masjid.",
+    "quran": {
+      "text": "Sesungguhnya salat itu adalah kewajiban yang ditentukan waktunya atas orang-orang beriman.",
+      "reference": "QS. An-Nisa: 103"
+    }
   }
 }
