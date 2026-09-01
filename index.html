@@ -1,98 +1,590 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#f6c84c">
-  <meta name="description" content="An-Nur Masjid Digital Display — jadwal sholat, countdown, pengumuman, agenda, slideshow dan dashboard pengaturan.">
-  <title>An-Nur • Masjid Digital Display</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#d4a62a">
+  <meta name="description" content="An-Nur Masjid Digital Display">
+
+  <title>Masjid An-Nur — Digital Display</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
-  <main class="app-shell">
-    <header class="topbar">
+
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
+
+  <main class="display">
+
+    <!-- HEADER -->
+    <header class="header">
+
       <div class="brand">
-        <div class="brand-mark">ن</div>
-        <div><div class="brand-name">AN-NUR</div><div class="brand-sub">MASJID DIGITAL DISPLAY</div></div>
+
+        <!-- CUSTOM SVG MOSQUE LOGO -->
+        <div class="logo">
+
+          <svg
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Logo Masjid An-Nur"
+          >
+
+            <defs>
+              <linearGradient id="goldGradient"
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="1">
+
+                <stop offset="0%" stop-color="#f7d978"/>
+                <stop offset="45%" stop-color="#d9aa32"/>
+                <stop offset="100%" stop-color="#a87813"/>
+
+              </linearGradient>
+            </defs>
+
+            <!-- Outer circle -->
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              fill="#fffaf0"
+              stroke="url(#goldGradient)"
+              stroke-width="3"
+            />
+
+            <!-- Dome -->
+            <path
+              d="M27 52
+                 C27 35 38 24 50 24
+                 C62 24 73 35 73 52
+                 Z"
+              fill="url(#goldGradient)"
+            />
+
+            <!-- Crescent -->
+            <path
+              d="M50 15
+                 C45 11 44 6 48 3
+                 C46 10 51 12 56 13
+                 C54 14 52 15 50 15Z"
+              fill="#b9871c"
+            />
+
+            <!-- Minarets -->
+            <rect x="18" y="39" width="7" height="36" rx="2" fill="#c69525"/>
+            <rect x="75" y="39" width="7" height="36" rx="2" fill="#c69525"/>
+
+            <path d="M16 39 L21.5 31 L27 39Z" fill="#d9aa32"/>
+            <path d="M73 39 L78.5 31 L84 39Z" fill="#d9aa32"/>
+
+            <!-- Main building -->
+            <path
+              d="M25 51
+                 H75
+                 V75
+                 H25
+                 Z"
+              fill="#fffdf8"
+              stroke="#d6aa35"
+              stroke-width="2"
+            />
+
+            <!-- Main door -->
+            <path
+              d="M43 75
+                 V63
+                 C43 56 57 56 57 63
+                 V75Z"
+              fill="#d4a52b"
+            />
+
+            <!-- Windows -->
+            <path
+              d="M31 59
+                 C31 55 37 55 37 59
+                 V65
+                 H31Z"
+              fill="#f0d27a"
+            />
+
+            <path
+              d="M63 59
+                 C63 55 69 55 69 59
+                 V65
+                 H63Z"
+              fill="#f0d27a"
+            />
+
+          </svg>
+
+        </div>
+
+        <div class="brand-text">
+          <div class="brand-name">AN-NUR</div>
+          <div class="brand-subtitle">MASJID DIGITAL DISPLAY</div>
+        </div>
+
       </div>
-      <div class="top-actions">
-        <div class="location-pill"><span>●</span><span id="locationLabel">Mendeteksi lokasi…</span></div>
-        <button class="icon-btn" id="settingsBtn" title="Pengaturan">⚙</button>
-        <button class="icon-btn" id="fullscreenBtn" title="Fullscreen">⛶</button>
+
+      <div class="header-right">
+
+        <button
+          class="location-button"
+          id="locationButton"
+          title="Gunakan lokasi perangkat"
+        >
+          <span class="location-dot"></span>
+
+          <span>
+            <small>LOKASI</small>
+            <strong id="locationText">
+              Ciangsana, Gunung Putri
+            </strong>
+          </span>
+
+          <span class="location-icon">⌖</span>
+        </button>
+
+        <button
+          class="header-button"
+          id="fullscreenButton"
+          title="Fullscreen"
+        >
+          ⛶
+        </button>
+
+        <button
+          class="header-button"
+          id="settingsButton"
+          title="Pengaturan"
+        >
+          ⚙
+        </button>
+
       </div>
+
     </header>
 
-    <section class="hero-grid">
-      <div class="hero-card glass">
-        <div class="hero-head">
-          <div>
-            <p class="eyebrow">ASSALAMU'ALAIKUM</p>
-            <h1 id="greeting">Selamat datang di Masjid An-Nur</h1>
-            <p class="muted" id="dateLine">Memuat tanggal…</p>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="hero-main">
+
+        <div class="welcome">
+
+          <div class="eyebrow">
+            ASSALAMU'ALAIKUM
           </div>
-          <div class="live-clock"><span id="clock">--:--:--</span><small>WIB</small></div>
+
+          <h1>
+            Selamat Datang<br>
+            di Masjid An-Nur
+          </h1>
+
+          <p id="dateText">
+            Memuat tanggal...
+          </p>
+
         </div>
+
+
+        <div class="clock-area">
+
+          <div
+            class="clock"
+            id="clock"
+          >
+            --:--:--
+          </div>
+
+          <div class="timezone">
+            WAKTU INDONESIA BARAT
+          </div>
+
+        </div>
+
+
         <div class="next-prayer">
-          <div><span class="label">WAKTU TERDEKAT</span><strong id="nextPrayerName">Memuat…</strong></div>
-          <div class="countdown" id="countdown">--:--:--</div>
+
+          <div class="next-info">
+
+            <span class="next-label">
+              WAKTU SALAT TERDEKAT
+            </span>
+
+            <strong id="nextPrayer">
+              Memuat...
+            </strong>
+
+          </div>
+
+          <div
+            class="countdown"
+            id="countdown"
+          >
+            --:--:--
+          </div>
+
         </div>
-        <div class="quote" id="quote">“Sesungguhnya salat itu adalah kewajiban yang ditentukan waktunya atas orang-orang beriman.”<span>QS. An-Nisa: 103</span></div>
-      </div>
 
-      <div class="side-card glass">
-        <div class="side-title"><span>JADWAL HARI INI</span><button id="refreshBtn" class="tiny-btn">↻</button></div>
-        <div id="prayerList" class="prayer-list"></div>
-      </div>
-    </section>
 
-    <section class="dashboard-grid">
-      <div class="panel glass">
-        <div class="panel-title"><span>📢 PENGUMUMAN</span><span class="live-dot">LIVE</span></div>
-        <div id="announcement" class="announcement"></div>
-        <div class="dots" id="announcementDots"></div>
-      </div>
-      <div class="panel glass">
-        <div class="panel-title">📅 AGENDA MASJID</div>
-        <div id="agendaList" class="agenda-list"></div>
-      </div>
-      <div class="panel glass">
-        <div class="panel-title">🌙 INFO HARI INI</div>
-        <div class="info-cards">
-          <div><small>HIJRIYAH</small><b id="hijri">—</b></div>
-          <div><small>CUACA</small><b id="weather">—</b></div>
-          <div><small>ARAH KIBLAT</small><b id="qibla">—</b></div>
+        <div class="quran-card">
+
+          <div class="quran-symbol">
+            ﷽
+          </div>
+
+          <div>
+            <p id="quranText">
+              Sesungguhnya salat itu adalah kewajiban
+              yang ditentukan waktunya atas orang-orang beriman.
+            </p>
+
+            <span>
+              QS. An-Nisa: 103
+            </span>
+          </div>
+
         </div>
+
       </div>
+
+
+      <!-- PRAYER PANEL -->
+      <aside class="prayer-panel">
+
+        <div class="section-heading">
+
+          <div>
+            <small>JADWAL</small>
+            <h2>Waktu Salat</h2>
+          </div>
+
+          <button
+            class="refresh-button"
+            id="refreshButton"
+            title="Perbarui jadwal"
+          >
+            ↻
+          </button>
+
+        </div>
+
+        <div
+          class="prayer-list"
+          id="prayerList"
+        >
+
+          <div class="loading">
+            Memuat jadwal...
+          </div>
+
+        </div>
+
+        <div class="calculation">
+          Metode Kementerian Agama RI
+        </div>
+
+      </aside>
+
     </section>
 
-    <section class="banner glass">
-      <div class="banner-icon">﷽</div>
-      <div><strong id="tickerText">Mari merapatkan dan meluruskan shaf.</strong><span>Terima kasih telah menjaga kebersihan dan ketenangan masjid.</span></div>
+
+    <!-- INFORMATION GRID -->
+    <section class="information-grid">
+
+      <!-- ANNOUNCEMENT -->
+      <article class="info-card announcement-card">
+
+        <div class="card-header">
+
+          <div>
+            <span class="card-icon">📢</span>
+            <span>PENGUMUMAN</span>
+          </div>
+
+          <span class="live">
+            ● LIVE
+          </span>
+
+        </div>
+
+        <div
+          class="announcement-content"
+          id="announcementContent"
+        >
+        </div>
+
+        <div
+          class="slider-dots"
+          id="announcementDots"
+        >
+        </div>
+
+      </article>
+
+
+      <!-- AGENDA -->
+      <article class="info-card">
+
+        <div class="card-header">
+
+          <div>
+            <span class="card-icon">📅</span>
+            <span>AGENDA MASJID</span>
+          </div>
+
+        </div>
+
+        <div
+          class="agenda-list"
+          id="agendaList"
+        >
+        </div>
+
+      </article>
+
+
+      <!-- QUICK INFO -->
+      <article class="info-card">
+
+        <div class="card-header">
+
+          <div>
+            <span class="card-icon">✨</span>
+            <span>INFO HARI INI</span>
+          </div>
+
+        </div>
+
+        <div class="quick-info">
+
+          <div class="quick-item">
+
+            <small>HIJRIYAH</small>
+
+            <strong id="hijriDate">
+              —
+            </strong>
+
+          </div>
+
+          <div class="quick-item">
+
+            <small>ARAH KIBLAT</small>
+
+            <strong id="qiblaDirection">
+              —
+            </strong>
+
+          </div>
+
+          <div class="quick-item">
+
+            <small>STATUS</small>
+
+            <strong class="online">
+              ONLINE
+            </strong>
+
+          </div>
+
+        </div>
+
+      </article>
+
     </section>
 
-    <footer><span>© <span id="year"></span> Masjid An-Nur • Bojonggede, Bogor</span><span>Digital Display v1.0</span></footer>
+
+    <!-- TICKER -->
+    <div class="ticker">
+
+      <div class="ticker-symbol">
+        ✦
+      </div>
+
+      <div class="ticker-content">
+
+        <strong id="tickerText">
+          Mari merapatkan dan meluruskan shaf.
+        </strong>
+
+        <span>
+          Mohon menjaga kebersihan, ketenangan,
+          dan kenyamanan masjid.
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <footer>
+
+      <span>
+        © <span id="year"></span> Masjid An-Nur
+      </span>
+
+      <span>
+        Ciangsana • Gunung Putri • Bogor
+      </span>
+
+    </footer>
+
   </main>
 
-  <div class="modal-backdrop" id="settingsModal">
-    <section class="modal">
-      <button class="close" id="closeSettings">×</button>
-      <div class="modal-head"><div class="brand-mark small">ن</div><div><h2>Pengaturan Display</h2><p>Atur tampilan tanpa mengubah kode.</p></div></div>
-      <div class="settings-grid">
-        <label>Nama Masjid<input id="setMosqueName" value="Masjid An-Nur"></label>
-        <label>Lokasi fallback<input id="setFallback" value="Bojonggede, Bogor, Indonesia"></label>
-        <label>Durasi slide (detik)<input id="setSlide" type="number" min="3" max="60" value="8"></label>
-        <label>Offset jadwal (menit)<input id="setTune" type="number" min="-30" max="30" value="0"></label>
-        <label class="wide">Running text<input id="setTicker" value="Mari merapatkan dan meluruskan shaf. • Mohon menjaga kebersihan masjid."></label>
+
+  <!-- SETTINGS MODAL -->
+  <div
+    class="modal-overlay"
+    id="settingsModal"
+  >
+
+    <div class="settings-modal">
+
+      <button
+        class="modal-close"
+        id="closeSettings"
+      >
+        ×
+      </button>
+
+      <div class="modal-title">
+
+        <div class="mini-logo">
+
+          <svg viewBox="0 0 100 100">
+
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              fill="#fffaf0"
+              stroke="#d4a62a"
+              stroke-width="4"
+            />
+
+            <path
+              d="M27 52 C27 35 38 24 50 24 C62 24 73 35 73 52Z"
+              fill="#d4a62a"
+            />
+
+            <rect
+              x="43"
+              y="56"
+              width="14"
+              height="20"
+              rx="7"
+              fill="#d4a62a"
+            />
+
+          </svg>
+
+        </div>
+
+        <div>
+          <h2>Pengaturan An-Nur</h2>
+          <p>Sesuaikan tampilan digital display.</p>
+        </div>
+
       </div>
-      <div class="setting-note">Lokasi browser digunakan bila diizinkan. Jika ditolak, aplikasi memakai Bojonggede, Bogor. Jadwal memakai metode Kementerian Agama RI dari AlAdhan API.</div>
-      <button class="primary-btn" id="saveSettings">Simpan Pengaturan</button>
-    </section>
+
+
+      <div class="settings-form">
+
+        <label>
+          Nama Masjid
+
+          <input
+            id="mosqueNameInput"
+            type="text"
+            value="Masjid An-Nur"
+          >
+
+        </label>
+
+
+        <label>
+          Lokasi Default
+
+          <input
+            id="fallbackLocationInput"
+            type="text"
+            value="Ciangsana, Gunung Putri, Bogor"
+          >
+
+        </label>
+
+
+        <label>
+          Penyesuaian Waktu Salat
+
+          <input
+            id="offsetInput"
+            type="number"
+            value="0"
+            min="-30"
+            max="30"
+          >
+
+          <small>
+            Menit. Gunakan hanya jika diperlukan
+            sesuai jadwal resmi masjid.
+          </small>
+
+        </label>
+
+
+        <label class="wide">
+          Running Text
+
+          <input
+            id="tickerInput"
+            type="text"
+            value="Mari merapatkan dan meluruskan shaf. • Mohon menjaga kebersihan masjid."
+          >
+
+        </label>
+
+      </div>
+
+
+      <div class="settings-note">
+
+        📍 Aplikasi akan menggunakan lokasi perangkat
+        jika izin lokasi diberikan. Jika tidak, aplikasi
+        menggunakan lokasi Ciangsana sebagai fallback.
+
+      </div>
+
+
+      <button
+        class="save-button"
+        id="saveSettings"
+      >
+        Simpan Pengaturan
+      </button>
+
+    </div>
+
   </div>
 
+
   <script src="app.js"></script>
+
 </body>
 </html>
